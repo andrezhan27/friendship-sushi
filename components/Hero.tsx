@@ -49,7 +49,7 @@ export default function Hero() {
           />
         </motion.div>
         <motion.div {...enter(1.08, 14)}>
-          <MagneticButton href="/reservas">{t.reserveTable}</MagneticButton>
+          <MagneticButton href="/reservation">{t.reserveTable}</MagneticButton>
         </motion.div>
       </div>
 

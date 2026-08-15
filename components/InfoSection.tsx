@@ -50,7 +50,7 @@ export default function InfoSection() {
           </div>
 
           <Reveal delay={0.18}>
-            <MagneticButton href="/reservas">{t.reserveTable}</MagneticButton>
+            <MagneticButton href="/reservation">{t.reserveTable}</MagneticButton>
           </Reveal>
         </div>
       </div>

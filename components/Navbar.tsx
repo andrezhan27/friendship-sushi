@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
@@ -43,13 +44,14 @@ export default function Navbar() {
   }, [pathname]);
 
   const visibleSection = pathname === "/menu" ? "menu-page" : activeSection;
+  const returnHome = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
 
   const links = [
-    [pathname === "/" ? "#top" : "/#top", t.navHome, "top"],
+    ["/", t.navHome, "top"],
     [pathname === "/" ? "#space" : "/#space", t.navSpace, "space"],
     [pathname === "/" ? "#menu" : "/#menu", t.navMenu, pathname === "/menu" ? "menu-page" : "menu"],
     [pathname === "/" ? "#info" : "/#info", t.navInfo, "info"],
@@ -57,15 +59,15 @@ export default function Navbar() {
 
   return (
     <header className={`navbar ${scrolled || open ? "navbar--solid" : ""}`}>
-      <a className="nav-brand" href={pathname === "/" ? "#top" : "/#top"} aria-label="Friendship Sushi — início">
+      <Link className="nav-brand" href="/" onClick={returnHome} aria-label="Friendship Sushi — início">
         <span className="nav-logo">
           <Image src="/images/logo.png" width={58} height={58} alt="" priority />
         </span>
-      </a>
+      </Link>
 
       <nav className="nav-links" aria-label="Navegação principal">
         {links.map(([href, label, section]) => (
-          <a key={href} href={href} className={visibleSection === section ? "active" : ""} aria-current={visibleSection === section ? "location" : undefined}>{label}</a>
+          <Link key={href} href={href} onClick={section === "top" ? returnHome : undefined} className={visibleSection === section ? "active" : ""} aria-current={visibleSection === section ? "location" : undefined}>{label}</Link>
         ))}
       </nav>
 
@@ -89,7 +91,7 @@ export default function Navbar() {
             EN
           </button>
         </div>
-        <a className="nav-reserve" href="/reservas">{t.navReserve}</a>
+        <Link className="nav-reserve" href="/reservation">{t.navReserve}</Link>
         <button
           className="menu-toggle"
           type="button"
@@ -112,13 +114,16 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
           >
             {links.map(([href, label, section], index) => (
-              <a key={href} href={href} className={visibleSection === section ? "active" : ""} onClick={() => setOpen(false)}>
+              <Link key={href} href={href} className={visibleSection === section ? "active" : ""} onClick={() => {
+                setOpen(false);
+                if (section === "top") returnHome();
+              }}>
                 <span>0{index + 1}</span>{label}
-              </a>
+              </Link>
             ))}
-            <a className="mobile-reserve" href="/reservas" onClick={() => setOpen(false)}>
+            <Link className="mobile-reserve" href="/reservation" onClick={() => setOpen(false)}>
               {t.reserveTable}
-            </a>
+            </Link>
           </motion.nav>
         )}
       </AnimatePresence>

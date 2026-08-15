@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Reserve a sua mesa no Friendship Sushi, Lisboa.",
 };
 
-export default function ReservationsPage() {
+export default function ReservationPage() {
   return (
     <main className="reservation-page">
       <iframe

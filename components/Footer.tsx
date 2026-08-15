@@ -2,6 +2,7 @@
 
 import { Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import logoText from "@/public/images/logo-text.png";
 import { useLanguage } from "./LanguageProvider";
 
@@ -12,16 +13,16 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-main section-shell">
-        <a className="footer-logo" href="#top" aria-label="Friendship Sushi — início">
+        <Link className="footer-logo" href="/" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "auto" })} aria-label="Friendship Sushi — início">
           <Image src={logoText} alt="Friendship Sushi" width={1536} height={1024} />
-        </a>
+        </Link>
 
         <div className="footer-column">
           <p>{t.footerNav}</p>
           <a href="#space">{t.navSpace}</a>
           <a href="#menu">{t.navMenu}</a>
           <a href="#info">{t.navInfo}</a>
-          <a href="/reservas">{t.reservations}</a>
+          <Link href="/reservation">{t.reservations}</Link>
         </div>
 
         <div className="footer-column">
