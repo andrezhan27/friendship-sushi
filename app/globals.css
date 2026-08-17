@@ -587,14 +587,17 @@ h2 {
 }
 
 .dish-card {
+  position: relative;
   width: min(72vw, 390px);
   flex: none;
   margin-right: 14px;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .dish-image {
   position: relative;
-  height: min(100vw, 500px);
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #0b0a09;
 }
@@ -602,7 +605,8 @@ h2 {
 .dish-image::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 65%, rgba(0, 0, 0, 0.4));
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.84) 100%);
   content: "";
 }
 
@@ -617,30 +621,28 @@ h2 {
 }
 
 .dish-meta {
-  padding: 19px 2px 0;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 24px 26px;
 }
 
-.dish-meta > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 9px;
-  color: #716b65;
+.dish-meta > p {
+  margin: 0 0 8px;
+  color: var(--amber);
   font-size: 0.6rem;
+  font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.dish-meta p {
-  margin: 0;
-}
-
 .dish-meta h3 {
   margin: 0;
-  font-family: var(--display);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
 }
 
 .drag-hint {
@@ -1010,8 +1012,6 @@ h2 {
 .footer-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
   padding-top: 22px;
   padding-bottom: 22px;
   border-top: 1px solid var(--line);
@@ -1019,6 +1019,21 @@ h2 {
   font-size: 0.57rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
+}
+
+.footer-bottom-copy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.footer-bottom a {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: var(--orange);
 }
 
 @media (min-width: 640px) {
@@ -1077,10 +1092,6 @@ h2 {
   .dish-card {
     width: min(52vw, 390px);
     margin-right: 20px;
-  }
-
-  .dish-image {
-    height: min(68vw, 520px);
   }
 
   .drag-hint {
@@ -1303,10 +1314,6 @@ h2 {
   .dish-card {
     width: min(29vw, 410px);
     margin-right: 22px;
-  }
-
-  .dish-image {
-    height: min(39vw, 550px);
   }
 
   .info-layout {
@@ -1608,9 +1615,15 @@ h2 {
   gap: 44px 18px;
 }
 
+.menu-grid-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
 .menu-grid-image {
   position: relative;
-  height: min(125vw, 590px);
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -1623,31 +1636,11 @@ h2 {
   transform: scale(1.025);
 }
 
-.menu-grid-meta {
-  padding-top: 18px;
-}
-
-.menu-grid-meta span {
-  color: #777069;
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.menu-grid-meta h2 {
-  margin-top: 8px;
-  font-size: clamp(1.35rem, 2.5vw, 2.1rem);
-  letter-spacing: -0.04em;
-}
-
 @media (min-width: 640px) {
   .menu-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .menu-grid-image {
-    height: min(66vw, 620px);
-  }
 }
 
 @media (min-width: 900px) {
@@ -1680,9 +1673,6 @@ h2 {
     gap: 60px 22px;
   }
 
-  .menu-grid-image {
-    height: min(43vw, 610px);
-  }
 }
 
 /* Final visual refinements */

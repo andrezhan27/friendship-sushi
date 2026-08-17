@@ -7,14 +7,14 @@ import { useLanguage } from "./LanguageProvider";
 import Reveal from "./Reveal";
 
 const dishes = [
-  { image: "/images/menu-1.webp", pt: "Seleção de Nigiri", en: "Nigiri Selection", categoryPt: "Nigiri & Gunkan", categoryEn: "Nigiri & Gunkan" },
-  { image: "/images/menu-2.webp", pt: "Lagostim Especial", en: "Special Langoustine", categoryPt: "Marisco", categoryEn: "Seafood" },
-  { image: "/images/menu-3.webp", pt: "Roll de Salmão", en: "Salmon Roll", categoryPt: "Uramaki", categoryEn: "Uramaki" },
-  { image: "/images/menu-4.webp", pt: "Crocante Dourado", en: "Golden Crunch", categoryPt: "Fusão", categoryEn: "Fusion" },
-  { image: "/images/menu-5.webp", pt: "Tataki de Atum", en: "Tuna Tataki", categoryPt: "Tataki", categoryEn: "Tataki" },
-  { image: "/images/menu-6.webp", pt: "Sashimi de Salmão", en: "Salmon Sashimi", categoryPt: "Sashimi", categoryEn: "Sashimi" },
-  { image: "/images/menu-7.webp", pt: "Gunkan de Salmão", en: "Salmon Gunkan", categoryPt: "Gunkan", categoryEn: "Gunkan" },
-  { image: "/images/menu-8.webp", pt: "Nigiri de Enguia", en: "Eel Nigiri", categoryPt: "Nigiri", categoryEn: "Nigiri" },
+  { image: "/menu/landing/menu-1.webp", pt: "Seleção de Nigiri", en: "Nigiri Selection", categoryPt: "Nigiri & Gunkan", categoryEn: "Nigiri & Gunkan" },
+  { image: "/menu/landing/menu-2.webp", pt: "Lagostim Especial", en: "Special Langoustine", categoryPt: "Marisco", categoryEn: "Seafood" },
+  { image: "/menu/landing/menu-3.webp", pt: "Roll de Salmão", en: "Salmon Roll", categoryPt: "Uramaki", categoryEn: "Uramaki" },
+  { image: "/menu/landing/menu-4.webp", pt: "Crocante Dourado", en: "Golden Crunch", categoryPt: "Fusão", categoryEn: "Fusion" },
+  { image: "/menu/landing/menu-5.webp", pt: "Tataki de Atum", en: "Tuna Tataki", categoryPt: "Tataki", categoryEn: "Tataki" },
+  { image: "/menu/landing/menu-6.webp", pt: "Sashimi de Salmão", en: "Salmon Sashimi", categoryPt: "Sashimi", categoryEn: "Sashimi" },
+  { image: "/menu/landing/menu-7.webp", pt: "Gunkan de Salmão", en: "Salmon Gunkan", categoryPt: "Gunkan", categoryEn: "Gunkan" },
+  { image: "/menu/landing/menu-8.webp", pt: "Nigiri de Enguia", en: "Eel Nigiri", categoryPt: "Nigiri", categoryEn: "Nigiri" },
 ];
 
 export default function MenuCarousel() {
@@ -84,7 +84,7 @@ export default function MenuCarousel() {
                 />
               </div>
               <div className="dish-meta">
-                <div><span>{String((index % dishes.length) + 1).padStart(2, "0")}</span><p>{language === "pt" ? dish.categoryPt : dish.categoryEn}</p></div>
+                <p>{language === "pt" ? dish.categoryPt : dish.categoryEn}</p>
                 <h3>{language === "pt" ? dish.pt : dish.en}</h3>
               </div>
             </motion.article>

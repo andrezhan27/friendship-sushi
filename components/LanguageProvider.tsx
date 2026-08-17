@@ -48,6 +48,8 @@ const copy = {
     privacy: "Política de Privacidade",
     complaints: "Livro de Reclamações",
     reservations: "Reservas",
+    footerDesignedBy: "Desenvolvido pela Intelis.",
+    footerRights: "Todos os direitos reservados.",
   },
   en: {
     navHome: "Home",
@@ -92,6 +94,8 @@ const copy = {
     privacy: "Privacy Policy",
     complaints: "Complaints Book",
     reservations: "Reservations",
+    footerDesignedBy: "Designed by Intelis.",
+    footerRights: "All rights reserved.",
   },
 } as const;
 

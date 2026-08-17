@@ -8,7 +8,6 @@ import { useLanguage } from "./LanguageProvider";
 
 export default function Footer() {
   const { t } = useLanguage();
-  const year = new Date().getFullYear();
 
   return (
     <footer className="footer">
@@ -43,8 +42,14 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom section-shell">
-        <span>© {year} Friendship Sushi</span>
-        <span>Lisboa · Portugal</span>
+        <div className="footer-bottom-copy">
+          <a href="https://www.intelis.pt/" target="_blank" rel="noreferrer">
+            {t.footerDesignedBy}
+          </a>
+          <a href="https://www.intelis.pt/" target="_blank" rel="noreferrer">
+            {t.footerRights}
+          </a>
+        </div>
       </div>
     </footer>
   );

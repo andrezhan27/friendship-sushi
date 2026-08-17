@@ -53,7 +53,7 @@ export default function Navbar() {
   const links = [
     ["/", t.navHome, "top"],
     [pathname === "/" ? "#space" : "/#space", t.navSpace, "space"],
-    [pathname === "/" ? "#menu" : "/#menu", t.navMenu, pathname === "/menu" ? "menu-page" : "menu"],
+    ["/menu", t.navMenu, pathname === "/menu" ? "menu-page" : "menu"],
     [pathname === "/" ? "#info" : "/#info", t.navInfo, "info"],
   ];
 
