@@ -20,7 +20,7 @@ export default function MenuPageContent({ images }: { images: string[] }) {
       </div>
       <div className="menu-grid section-shell">
         {images.map((image, index) => (
-          <Reveal className="menu-grid-card" delay={(index % 3) * 0.06} key={image}>
+          <div className="menu-grid-card" key={image}>
             <div className="menu-grid-image">
               <Image
                 src={image}
@@ -30,7 +30,7 @@ export default function MenuPageContent({ images }: { images: string[] }) {
                 sizes="(max-width: 639px) 100vw, (max-width: 999px) 50vw, 33vw"
               />
             </div>
-          </Reveal>
+          </div>
         ))}
       </div>
     </section>
