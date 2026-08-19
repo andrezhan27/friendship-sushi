@@ -8,6 +8,8 @@ import { useLanguage } from "./LanguageProvider";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const privacyPolicyUrl = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL?.trim() || "#privacy";
+  const isExternalPrivacyPolicy = /^https?:\/\//i.test(privacyPolicyUrl);
 
   return (
     <footer className="footer">
@@ -26,7 +28,13 @@ export default function Footer() {
 
         <div className="footer-column">
           <p>{t.legal}</p>
-          <a href="#privacy">{t.privacy}</a>
+          <a
+            href={privacyPolicyUrl}
+            target={isExternalPrivacyPolicy ? "_blank" : undefined}
+            rel={isExternalPrivacyPolicy ? "noreferrer" : undefined}
+          >
+            {t.privacy}
+          </a>
           <a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noreferrer">
             {t.complaints}
           </a>
