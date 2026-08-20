@@ -1,64 +1,8 @@
-"use client";
+import FooterContent from "./FooterContent";
+import { getRestaurantLegalLinks } from "@/lib/restaurant-legal-links";
 
-import { Facebook, Instagram } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import logoText from "@/public/images/logo-text.png";
-import { useLanguage } from "./LanguageProvider";
+export default async function Footer() {
+  const legalLinks = await getRestaurantLegalLinks();
 
-export default function Footer() {
-  const { t } = useLanguage();
-  const privacyPolicyUrl = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL?.trim() || "#privacy";
-  const isExternalPrivacyPolicy = /^https?:\/\//i.test(privacyPolicyUrl);
-
-  return (
-    <footer className="footer">
-      <div className="footer-main section-shell">
-        <Link className="footer-logo" href="/" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "auto" })} aria-label="Friendship Sushi — início">
-          <Image src={logoText} alt="Friendship Sushi" width={1536} height={1024} />
-        </Link>
-
-        <div className="footer-column">
-          <p>{t.footerNav}</p>
-          <a href="#space">{t.navSpace}</a>
-          <a href="#menu">{t.navMenu}</a>
-          <a href="#info">{t.navInfo}</a>
-          <Link href="/reservation">{t.reservations}</Link>
-        </div>
-
-        <div className="footer-column">
-          <p>{t.legal}</p>
-          <a
-            href={privacyPolicyUrl}
-            target={isExternalPrivacyPolicy ? "_blank" : undefined}
-            rel={isExternalPrivacyPolicy ? "noreferrer" : undefined}
-          >
-            {t.privacy}
-          </a>
-          <a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noreferrer">
-            {t.complaints}
-          </a>
-        </div>
-
-        <div className="social-links">
-          <a className="social-link" href="https://www.instagram.com/friendship_sushi" target="_blank" rel="noreferrer" aria-label="Instagram">
-            <Instagram size={21} strokeWidth={1.5} />
-          </a>
-          <a className="social-link" href="https://www.facebook.com/profile.php?id=61563631226419&sk=reels_tab" target="_blank" rel="noreferrer" aria-label="Facebook">
-            <Facebook size={21} strokeWidth={1.5} />
-          </a>
-        </div>
-      </div>
-      <div className="footer-bottom section-shell">
-        <div className="footer-bottom-copy">
-          <a href="https://www.intelis.pt/" target="_blank" rel="noreferrer">
-            {t.footerDesignedBy}
-          </a>
-          <a href="https://www.intelis.pt/" target="_blank" rel="noreferrer">
-            {t.footerRights}
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
+  return <FooterContent legalLinks={legalLinks} />;
 }
